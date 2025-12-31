@@ -1,0 +1,74 @@
+# ====================================================
+# KULIT.AI PROJECT SPECIFIC
+# ====================================================
+
+# Python umum
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+
+# Environment variables (JANGAN commit credentials!)
+.env
+.env.local
+.secrets/
+
+# IDE files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# ====================================================
+# DATA & MODELS - JANGAN COMMIT!
+# ====================================================
+
+# Dataset
+data/  # kecuali metadata/README
+!data/README.md
+
+# Model hasil training
+notebooks/model_hasil_training/
+notebooks/model_hash_training/
+
+# Model compressed
+model.tar.gz
+
+# SageMaker outputs
+output/
+checkpoints/
+
+# ====================================================
+# DEPENDENCIES & BUILD
+# ====================================================
+# Python packages
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+env/
+venv/
+
+# ====================================================
+# TEMPORARY & LOG FILES
+# ====================================================
+*.log
+logs/
+temp/
+tmp/
+*.tmp
+*.temp
+
+# ====================================================
+# NOTEBOOK OUTPUT CELLS (opsional)
+# ====================================================
+# Jika tidak ingin commit output notebook
+# notebooks/*.ipynb  # uncomment jika perlu

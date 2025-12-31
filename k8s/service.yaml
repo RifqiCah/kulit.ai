@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kulit-ai-service
+  annotations:
+    # Menggunakan AWS Network Load Balancer (NLB) untuk performa tinggi
+    service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+spec:
+  selector:
+    app: kulit-ai  # Wajib SAMA dengan label di deployment
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80         # Port yang dibuka ke user (Public)
+      targetPort: 80   # Port aplikasi di container

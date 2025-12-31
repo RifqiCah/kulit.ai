@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kulit-ai-inference
+  labels:
+    app: kulit-ai
+    environment: production
+spec:
+  replicas: 3  # High Availability: 3 Pods jalan bersamaan
+  selector:
+    matchLabels:
+      app: kulit-ai
+  template:
+    metadata:
+      labels:
+        app: kulit-ai
+    spec:
+      containers:
+      - name: kulit-ai-container
+        # Placeholder Image (Ceritanya ini URL private registry perusahaan)
+        image: 123456789012.dkr.ecr.us-east-1.amazonaws.com/kulit-ai:latest
+        ports:
+        - containerPort: 80 # Sesuai dengan EXPOSE di Dockerfile
+        resources:
+          # Resource request (Minimal spek yang diminta)
+          requests:
+            memory: "512Mi"
+            cpu: "500m" # Setara 0.5 Core
+          # Resource limits (Batas atas biar gak makan jatah teman)
+          limits:
+            memory: "1Gi"
+            cpu: "1000m" # Setara 1 Core
+        # Kita hapus ENV S3 karena model sudah dibake di dalam Docker Image
